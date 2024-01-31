@@ -1,23 +1,32 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 const button = document.getElementById("btn");
+const backBtn = document.getElementById("back");
 const petDetails = document.getElementById("pet-info");
-const weightButton = document.getElementById("wb");
+const vpButton = document.getElementById("wb");
+const startButton = document.getElementById("start");
+const btfButton = document.getElementById("back-to-form");
 const vpContainer = document.getElementById("virtual-pet");
+const container0 = document.getElementById("container-0"); 
+const container1 = document.getElementById("container-1");
+const container2 = document.getElementById("container-2");
+const container3 = document.getElementById("container-3");
+const form = document.getElementById("form");
+const formPageButton = document.getElementById("form-page");
+
 console.log("vp container initialized");
-function addPet(){
-    if(inputBox.value === ''){
-        alert("You must write something!");  
-    }
-    else{
-        let li =document.createElement("li");
+function addPet() {
+    if (inputBox.value === '') {
+        alert("You must write something!");
+    } else {
+        let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
         li.appendChild(span);
     }
-    inputBox.value == "";
+    inputBox.value = "";  
     saveData();
 }
 
@@ -36,7 +45,27 @@ function showTask(){
 function showVirtualPet(){
     vpContainer.classList.toggle('virtual-pets');
 }
-button.addEventListener("click", addPet)
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    showToDoList();
+});
+function showToDoList() {
+    // Check if the required inputs in the form are filled
+    if (form.checkValidity()) {
+        // Update h2 in container-2 with the pet's name
+        const petName = document.getElementById("pet-name").value;
+        document.getElementById("pet-todo-title").textContent = `${petName}'s To-Do List`;
+
+        container1.style.display = "none";
+        container2.style.display = "block";
+    } else {
+        // Trigger the HTML5 form validation
+        form.reportValidity();
+    }
+}
+
+button.addEventListener("click", addPet);
+
 inputBox.addEventListener("keyup", function(event){
     if(event.key === "Enter"){
         if(inputBox.value === ''){
@@ -67,7 +96,32 @@ listContainer.addEventListener("click", function(e){
     }
 }, false);
 console.log("adding event listener for weight button");
-
-weightButton.addEventListener("click", showVirtualPet);
-
+startButton.addEventListener("click", function () {
+    showToDoList();
+});
+vpButton.addEventListener("click", function () {
+    // Check if the required inputs in the form are filled
+    if (form.checkValidity()) {
+        // Move to container-3 when the "wb" button is clicked
+        container2.style.display = "none";
+        container3.style.display = "block";
+    } else {
+        // Trigger the HTML5 form validation
+        form.reportValidity();
+    }
+    // Additional logic as needed
+    // ...
+});
+backBtn.addEventListener("click", function () {
+    container3.style.display = "none";
+    container2.style.display = "block";
+});
+formPageButton.addEventListener("click", function () {
+    container0.style.display = "none";
+    container1.style.display = "block";
+});
+btfButton.addEventListener("click", function () {
+    container2.style.display = "none";
+    container1.style.display = "block";
+});
 showTask();

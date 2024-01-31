@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 .page{
+    width: 100%; 
     display: flex;
     flex-flow: row;
     background: linear-gradient(135deg, #153677, #4e085f);
@@ -12,9 +13,9 @@
 }
 .container{
     width: 100%;
-    
-    min-height: 100vh;
     padding: 10px;
+    min-height: 100vh;
+    /* height: 50vh; */
 }
 .todo-app{
     width: 100%;
@@ -22,16 +23,18 @@
     background: #fff;
     padding: 40px 30px 70px;
     border-radius: 10px;
+    height: 95vh;
+}
+.topLogo{
+    display: block;
+    max-width: 80%;
+    margin: 15px auto;
 }
 .todo-app h1{
     width: 100%;
     margin: 100px auto 20px;
     color: #002765;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    padding-left: 85px;
+    text-align: center;
 }
 .todo-app h2{
     color: #002765;
@@ -39,20 +42,29 @@
     align-items: center;
     margin-bottom: 20px;
 }
-.todo-app h2 img{
+#container-0 h2{
+font-weight: 600;
+opacity: 0.5;
+}
+#container-2 span{
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+#listPic{
     width: 100px;
     margin-left: 10px;
 }
-.row{
+#form{
     display: flex;
+    flex-flow: column;
     align-items: center;
     justify-content: space-between;
-    background: #edeef0;
+    /* background: #edeef0; */
     border-radius: 30px;
     padding-left: 20px;
     margin-bottom: 25px;
 }
-.row2{
+.row{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -76,6 +88,28 @@ button{
     padding: 16px 50px;
     background: #ff5945;
     color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+}
+button:hover{
+    background:#002765;
+    box-shadow: 2px 4px rgb(193, 186, 186);
+}
+.details{
+    margin-bottom: 10px;
+    width: 50vw;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 20px;
+}
+#dropdown{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    opacity: 0.5;
+    background: #fff;
+    /* color: #ffffff; */
     font-size: 16px;
     cursor: pointer;
     border-radius: 40px;
@@ -121,9 +155,9 @@ ul li span{
 ul li span:hover{
     background: #edeef0;
 }
-.pet-detail{
+/* .pet-detail{
     visibility: hidden;
-}
+} */
 
 .virtual-pets{
     width: 100%;
@@ -132,6 +166,33 @@ ul li span:hover{
     padding: 40px 30px 70px;
     border-radius: 10px;
     visibility: hidden;
+}
+#container-1, #container-2, #container-3{
+    /* visibility: hidden; */
+    display: none;
+}
+#container-0{
+    margin:40% auto;
+    text-align: center;
+    display: block;
+}
+#container-1 h2{
+    padding: 0 20%;    
+}
+.buttons-div{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+#btn{
+    opacity: 0.6;
+    background-color: #002765;
+}
+#btn:hover{
+    background: #ff5945;
+    opacity: 1;
+
 }
 @media only screen and (max-width: 600px) {
     .page{
