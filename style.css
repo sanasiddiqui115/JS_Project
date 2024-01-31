@@ -6,7 +6,13 @@
 }
 .page{
     width: 100%; 
+    display: flex;
+    flex-flow: row;
     background: linear-gradient(135deg, #153677, #4e085f);
+
+}
+.container{
+    width: 100%;
     padding: 10px;
     min-height: 100vh;
     /* height: 50vh; */
@@ -187,4 +193,10 @@ ul li span:hover{
     background: #ff5945;
     opacity: 1;
 
+}
+@media only screen and (max-width: 600px) {
+    .page{
+        display: flex;
+        flex-flow: column;
+    }
 }
