@@ -42,7 +42,7 @@
                         <input id="pet-name" class="details" name="pet-name" type="text" placeholder="Pet's Name" required>
                     </div>
                     <div class="row">
-                        <input id="weight" class="details" name="weight" type="number"  placeholder="Pet's weight" >
+                        <input id="weight" class="details" name="weight" type="text"  placeholder="Pet's weight" >
                     </div>                    
                         <button id="start" >start</button>
                     
@@ -66,24 +66,29 @@
              </div>
             <div class="container" id="container-3">
             <!-- <h1><img src="https://t4.ftcdn.net/jpg/02/26/53/33/240_F_226533348_TiIz0m2dU4dBXC6yFJrNOfXfh5YcEecY.jpg" alt="" class="topLogo"></h1> -->
-                    <h1><img src="images/title.jpeg" alt=""></h1>
-                    <h2>heading two
-                    </h2>
+            <h2 id="virtual-name"></h2>
+            
+                    <h1><img id= "vp-image" src="" alt="" width="400" height="300"></h1>
+                    <div id="vp-name">Name: <strong><span id="vp-name-span" class="name"></span> </strong></div>
+                    <div>Weight: <strong><span id="vp-weight" class="weight"></span> pounds</strong></div>
+                    <div id="nw"></div>
+                    <div>Happiness: <strong><span id="vp-happiness" class="happiness"></span> tail wags (per min)</strong></div>
+                    <button id="treat-button">
+                        Treat
+                      </button>
+                      <button id="play-button">
+                        Play
+                      </button>
+                      <button id="exercise-button">
+                        Exercise
+                      </button>
                     <button id="back">Back</button>
             </div>
-           
-        </div>
-    </div>
-    <div class="container">
-        <div class="virtual-pets" id="virtual-pet">
-            <h1><img src="images/title.jpeg" alt=""></h1>
-            <h2>heading two
-            </h2>
         </div>
 
        </div>
     </div>
-
+  
         <script src="script.js"></script>
     </body>
 </html>

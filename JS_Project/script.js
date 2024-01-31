@@ -2,7 +2,6 @@ const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 const button = document.getElementById("btn");
 const backBtn = document.getElementById("back");
-const petDetails = document.getElementById("pet-info");
 const vpButton = document.getElementById("wb");
 const startButton = document.getElementById("start");
 const btfButton = document.getElementById("back-to-form");
@@ -13,6 +12,14 @@ const container2 = document.getElementById("container-2");
 const container3 = document.getElementById("container-3");
 const form = document.getElementById("form");
 const formPageButton = document.getElementById("form-page");
+const treatButton = document.getElementById("treat-button");
+const playButton = document.getElementById("play-button");
+const exerciseButton = document.getElementById("exercise-button");
+const weight = document.getElementById("weight");
+
+let vp_weight = document.getElementById("vp-weight");
+let vp_happiness = document.getElementById("vp-happiness");
+let happiness = 5;
 
 console.log("vp container initialized");
 function addPet() {
@@ -30,9 +37,6 @@ function addPet() {
   saveData();
 }
 
-function show() {
-  petDetails.classList.toggle("pet-detail");
-}
 
 function saveData() {
   localStorage.setItem("data", listContainer.innerHTML);
@@ -162,4 +166,69 @@ vpButton.addEventListener("click", function () {
       petImage.src = "images/hamster.png";
       break;
   }
+  let pet_info = {
+    name: petName,
+    weight: weight.value,
+    happiness: 5
+  }
+  const vp_name = document.getElementById("vp-name-span");
+  vp_name.innerHTML = pet_info.name;
+  vp_weight.innerHTML = pet_info.weight;
+  vp_happiness.innerHTML = pet_info.happiness;
+  
+
+  checkAndUpdatePetInfoInHtml();
+
+  // When each button is clicked, it will "call" function for that button (functions are below)
+  treatButton.addEventListener("click", clickedTreatButton);
+  playButton.addEventListener("click", clickedPlayButton);
+  exerciseButton.addEventListener("click", clickedExerciseButton);
+  
+  function clickedTreatButton() {
+    // Increase pet happiness
+    pet_info.happiness = pet_info.happiness + 2;
+    // Increase pet weight
+    pet_info.weight++;
+    checkAndUpdatePetInfoInHtml();
+  }
+  
+  function clickedPlayButton() {
+    // Increase pet happiness
+    pet_info.happiness += 2;
+    // Decrease pet weight
+    pet_info.weight -= 1;
+    checkAndUpdatePetInfoInHtml();
+  }
+  
+  function clickedExerciseButton() {
+    // Decrease pet happiness
+    pet_info.happiness--;
+    // Decrease pet weight
+    pet_info.weight--;
+    checkAndUpdatePetInfoInHtml();
+  }
+
+  function checkAndUpdatePetInfoInHtml() {
+    checkWeightAndHappinessBeforeUpdating();  
+    updatePetInfoInHtml();
+  }
+  
+  function checkWeightAndHappinessBeforeUpdating() {
+    // Add conditional so if weight is lower than zero, set it back to zero
+    if (pet_info.weight < 1) {
+      pet_info.weight = 1;
+    }
+    if (pet_info.happiness < 1) {
+      pet_info.happiness = 1;
+    }
+  }
+  
+  // Updates your HTML with the current values in your pet_info object
+  function updatePetInfoInHtml() {
+    vp_weight.innerHTML = pet_info.weight;
+    vp_happiness.innerHTML = pet_info.happiness;
+  }
+
 });
+
+
