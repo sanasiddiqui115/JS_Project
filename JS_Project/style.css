@@ -18,6 +18,7 @@
   padding: 40px 30px 70px;
   border-radius: 10px;
   height: 95vh;
+  margin: 0 auto;
 }
 .topLogo {
   display: block;
@@ -53,10 +54,11 @@
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
-  /* background: #edeef0; */
   border-radius: 30px;
-  padding-left: 20px;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
 }
 .row {
   display: flex;
@@ -66,6 +68,7 @@
   border-radius: 30px;
   padding-left: 20px;
   margin-bottom: 25px;
+  width: 100%;
 }
 input {
   flex: 1;
@@ -92,7 +95,7 @@ button:hover {
 }
 .details {
   margin-bottom: 10px;
-  width: 50vw;
+  width:100%;
   text-align: center;
   font-weight: 600;
   padding-top: 20px;
