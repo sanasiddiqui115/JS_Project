@@ -12,6 +12,8 @@ const container2 = document.getElementById("container-2");
 const container3 = document.getElementById("container-3");
 const form = document.getElementById("form");
 const formPageButton = document.getElementById("form-page");
+const pageBack = document.getElementById("page");
+const dropdown = document.getElementById("dropdown");
 const treatButton = document.getElementById("treat-button");
 const playButton = document.getElementById("play-button");
 const exerciseButton = document.getElementById("exercise-button");
@@ -131,6 +133,41 @@ formPageButton.addEventListener("click", function () {
 btfButton.addEventListener("click", function () {
   container2.style.display = "none";
   container1.style.display = "block";
+});
+dropdown.addEventListener("change", function () {
+  const selectedPet = dropdown.value;
+
+  switch (selectedPet) {
+    case "dog":
+      pageBack.style.background = "linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)";
+      break;
+    case "cat":
+      pageBack.style.background = "linear-gradient(135deg, #335577, #55aaff)";
+      break;
+    case "bird":
+      pageBack.style.background = "linear-gradient(135deg, #aa7700, #ffee88)";
+      break;
+    case "fish":
+      pageBack.style.background = "linear-gradient(135deg, #003366, #66ccff)";
+      break;
+    case "snake":
+      pageBack.style.background = "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)";
+      break;
+    case "hamster":
+      pageBack.style.background = "linear-gradient(135deg, #cc9900, #ffcc66)";
+      break;
+    case "farret":
+      pageBack.style.background = "linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%)";
+      break;
+    case "rabbit":
+      pageBack.style.background = "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%";
+      break;
+    case "other":
+      pageBack.style.background = "linear-gradient(135deg, #808080, #c0c0c0)";
+      break;
+    default:
+      pageBack.style.background = "linear-gradient(135deg, #153677, #4e085f)";
+  }
 });
 showTask();
 vpButton.addEventListener("click", function () {
