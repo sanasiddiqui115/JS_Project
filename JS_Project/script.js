@@ -18,39 +18,14 @@ const treatButton = document.getElementById("treat-button");
 const playButton = document.getElementById("play-button");
 const exerciseButton = document.getElementById("exercise-button");
 const weight = document.getElementById("weight");
-
 let vp_weight = document.getElementById("vp-weight");
 let vp_happiness = document.getElementById("vp-happiness");
 let happiness = 5;
-
+const love = document.getElementById("love");
+let loveCount = 1;
+const lovebar = document.querySelector(".lovebar");
 console.log("vp container initialized");
-function addPet() {
-  if (inputBox.value === "") {
-    alert("You must write something!");
-  } else {
-    let li = document.createElement("li");
-    li.innerHTML = inputBox.value;
-    listContainer.appendChild(li);
-    let span = document.createElement("span");
-    span.innerHTML = "\u00d7";
-    li.appendChild(span);
-  }
-  inputBox.value = "";
-  saveData();
-}
 
-
-function saveData() {
-  localStorage.setItem("data", listContainer.innerHTML);
-}
-
-function showTask() {
-  listContainer.innerHTML = localStorage.getItem("data");
-}
-
-function showVirtualPet() {
-  vpContainer.classList.toggle("virtual-pets");
-}
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -103,169 +78,209 @@ listContainer.addEventListener(
       e.target.parentElement.remove();
       saveData();
     }
-  },
-  false
-);
-console.log("adding event listener for weight button");
-startButton.addEventListener("click", function () {
-  showToDoList();
-});
-vpButton.addEventListener("click", function () {
-  // Check if the required inputs in the form are filled
-  if (form.checkValidity()) {
-    // Move to container-3 when the "wb" button is clicked
+  },  false);
+  startButton.addEventListener("click", function () {
+    showToDoList();
+  });
+  vpButton.addEventListener("click", function () {
+    // Check if the required inputs in the form are filled
+    if (form.checkValidity()) {
+      // Move to container-3 when the "wb" button is clicked
+      container2.style.display = "none";
+      container3.style.display = "block";
+    } else {
+      // Trigger the HTML5 form validation
+      form.reportValidity();
+    }
+    // Additional logic as needed
+  });
+  backBtn.addEventListener("click", function () {
+    container3.style.display = "none";
+    container2.style.display = "block";
+  });
+  formPageButton.addEventListener("click", function () {
+    container0.style.display = "none";
+    container1.style.display = "block";
+  });
+  btfButton.addEventListener("click", function () {
     container2.style.display = "none";
-    container3.style.display = "block";
-  } else {
-    // Trigger the HTML5 form validation
-    form.reportValidity();
-  }
-  // Additional logic as needed
-});
-backBtn.addEventListener("click", function () {
-  container3.style.display = "none";
-  container2.style.display = "block";
-});
-formPageButton.addEventListener("click", function () {
-  container0.style.display = "none";
-  container1.style.display = "block";
-});
-btfButton.addEventListener("click", function () {
-  container2.style.display = "none";
-  container1.style.display = "block";
-});
-dropdown.addEventListener("change", function () {
-  const selectedPet = dropdown.value;
+    container1.style.display = "block";
+  });
+  dropdown.addEventListener("change", function () {
+    const selectedPet = dropdown.value;
 
-  switch (selectedPet) {
-    case "dog":
-      pageBack.style.background = "linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)";
-      break;
-    case "cat":
-      pageBack.style.background = "linear-gradient(135deg, #335577, #55aaff)";
-      break;
-    case "bird":
-      pageBack.style.background = "linear-gradient(135deg, #aa7700, #ffee88)";
-      break;
-    case "fish":
-      pageBack.style.background = "linear-gradient(135deg, #003366, #66ccff)";
-      break;
-    case "snake":
-      pageBack.style.background = "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)";
-      break;
-    case "hamster":
-      pageBack.style.background = "linear-gradient(135deg, #cc9900, #ffcc66)";
-      break;
-    case "farret":
-      pageBack.style.background = "linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%)";
-      break;
-    case "rabbit":
-      pageBack.style.background = "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%";
-      break;
-    case "other":
-      pageBack.style.background = "linear-gradient(135deg, #808080, #c0c0c0)";
-      break;
-    default:
-      pageBack.style.background = "linear-gradient(135deg, #153677, #4e085f)";
-  }
-});
-showTask();
-vpButton.addEventListener("click", function () {
+    switch (selectedPet) {
+      case "dog":
+        pageBack.style.background = "linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)";
+        break;
+      case "cat":
+        pageBack.style.background = "linear-gradient(135deg, #335577, #55aaff)";
+        break;
+      case "bird":
+        pageBack.style.background = "linear-gradient(135deg, #aa7700, #ffee88)";
+        break;
+      case "fish":
+        pageBack.style.background = "linear-gradient(135deg, #003366, #66ccff)";
+        break;
+      case "snake":
+        pageBack.style.background = "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)";
+        break;
+      case "hamster":
+        pageBack.style.background = "linear-gradient(135deg, #cc9900, #ffcc66)";
+        break;
+      case "farret":
+        pageBack.style.background = "linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%)";
+        break;
+      case "rabbit":
+        pageBack.style.background = "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%";
+        break;
+      case "other":
+        pageBack.style.background = "linear-gradient(135deg, #808080, #c0c0c0)";
+        break;
+      default:
+        pageBack.style.background = "linear-gradient(135deg, #153677, #4e085f)";
+    }
+  });
+  showTask();
+  vpButton.addEventListener("click", function () {
+    
   const petName = document.getElementById("pet-name").value;
-  const virtualName = document.getElementById("virtual-name");
-  virtualName.innerHTML = petName;
-  const petOption = document.getElementById("dropdown").value;
-  const petImage = document.getElementById("vp-image");
-  console.log(petOption);
-  switch (petOption) {
-    case "dog":
-      petImage.src = "images/dog.png";
-      break;
-    case "cat":
-      petImage.src = "images/cat.png";
-      break;
-    case "bird":
-      petImage.src = "images/bird.png";
-      break;
-    case "fish":
-      petImage.src = "images/fish.png";
-      break;
-    case "snake":
-      petImage.src = "images/snake.png";
-      break;
-    case "farret":
-      petImage.src = "images/farret.png";
-      break;
-    case "rabbit":
-      petImage.src = "images/rabbit.png";
-      break;
-    case "hamster":
-      petImage.src = "images/hamster.png";
-      break;
-  }
-  let pet_info = {
-    name: petName,
-    weight: weight.value,
-    happiness: 5
-  }
-  const vp_name = document.getElementById("vp-name-span");
-  vp_name.innerHTML = pet_info.name;
-  vp_weight.innerHTML = pet_info.weight;
-  vp_happiness.innerHTML = pet_info.happiness;
-  
-
-  checkAndUpdatePetInfoInHtml();
-
-  // When each button is clicked, it will "call" function for that button (functions are below)
-  treatButton.addEventListener("click", clickedTreatButton);
-  playButton.addEventListener("click", clickedPlayButton);
-  exerciseButton.addEventListener("click", clickedExerciseButton);
-  
-  function clickedTreatButton() {
-    // Increase pet happiness
-    pet_info.happiness = pet_info.happiness + 2;
-    // Increase pet weight
-    pet_info.weight++;
-    checkAndUpdatePetInfoInHtml();
-  }
-  
-  function clickedPlayButton() {
-    // Increase pet happiness
-    pet_info.happiness += 2;
-    // Decrease pet weight
-    pet_info.weight -= 1;
-    checkAndUpdatePetInfoInHtml();
-  }
-  
-  function clickedExerciseButton() {
-    // Decrease pet happiness
-    pet_info.happiness--;
-    // Decrease pet weight
-    pet_info.weight--;
-    checkAndUpdatePetInfoInHtml();
-  }
-
-  function checkAndUpdatePetInfoInHtml() {
-    checkWeightAndHappinessBeforeUpdating();  
-    updatePetInfoInHtml();
-  }
-  
-  function checkWeightAndHappinessBeforeUpdating() {
-    // Add conditional so if weight is lower than zero, set it back to zero
-    if (pet_info.weight < 1) {
-      pet_info.weight = 1;
+    const virtualName = document.getElementById("virtual-name");
+    virtualName.innerHTML = petName;
+    const petOption = document.getElementById("dropdown").value;
+    const petImage = document.getElementById("vp-image");
+    console.log(petOption);
+    switch (petOption) {
+      case "dog":
+        petImage.src = "images/dog.png";
+        break;
+      case "cat":
+        petImage.src = "images/cat.png";
+        break;
+      case "bird":
+        petImage.src = "images/bird.png";
+        break;
+      case "fish":
+        petImage.src = "images/fish.png";
+        break;
+      case "snake":
+        petImage.src = "images/snake.png";
+        break;
+      case "farret":
+        petImage.src = "images/farret.png";
+        break;
+      case "rabbit":
+        petImage.src = "images/rabbit.png";
+        break;
+      case "hamster":
+        petImage.src = "images/hamster.png";
+        break;
     }
-    if (pet_info.happiness < 1) {
-      pet_info.happiness = 1;
+    let pet_info = {
+      name: petName,
+      weight: weight.value,
+      happiness: 5
     }
-  }
-  
-  // Updates your HTML with the current values in your pet_info object
-  function updatePetInfoInHtml() {
+    const vp_name = document.getElementById("vp-name-span");
+    vp_name.innerHTML = pet_info.name;
     vp_weight.innerHTML = pet_info.weight;
     vp_happiness.innerHTML = pet_info.happiness;
+    
+
+    checkAndUpdatePetInfoInHtml();
+
+    // When each button is clicked, it will "call" function for that button (functions are below)
+    treatButton.addEventListener("click", clickedTreatButton);
+    playButton.addEventListener("click", clickedPlayButton);
+    exerciseButton.addEventListener("click", clickedExerciseButton);
+    
+    function clickedTreatButton() {
+      // Increase pet happiness
+      pet_info.happiness = pet_info.happiness + 2;
+      // Increase pet weight
+      pet_info.weight++;
+      incLovebar();
+      checkAndUpdatePetInfoInHtml();
+    }
+    
+    function clickedPlayButton() {
+      // Increase pet happiness
+      pet_info.happiness += 2;
+      // Decrease pet weight
+      pet_info.weight -= 1;
+      incLovebar();
+      checkAndUpdatePetInfoInHtml();
+    }
+    
+    function clickedExerciseButton() {
+      // Decrease pet happiness
+      pet_info.happiness--;
+      // Decrease pet weight
+      pet_info.weight--;
+      checkAndUpdatePetInfoInHtml();
+    }
+
+    function checkAndUpdatePetInfoInHtml() {
+      checkWeightAndHappinessBeforeUpdating();  
+      updatePetInfoInHtml();
+    }
+    
+    function checkWeightAndHappinessBeforeUpdating() {
+      // Add conditional so if weight is lower than zero, set it back to zero
+      if (pet_info.weight < 1) {
+        pet_info.weight = 1;
+      }
+      if (pet_info.happiness < 1) {
+        pet_info.happiness = 1;
+      }
+    }
+    
+    // Updates your HTML with the current values in your pet_info object
+    function updatePetInfoInHtml() {
+      vp_weight.innerHTML = pet_info.weight;
+      vp_happiness.innerHTML = pet_info.happiness;
+    }
+  });
+
+  function addPet() {
+    if (inputBox.value === "") {
+      alert("You must write something!");
+    } else {
+      let li = document.createElement("li");
+      li.innerHTML = inputBox.value;
+      listContainer.appendChild(li);
+      let span = document.createElement("span");
+      span.innerHTML = "\u00d7";
+      li.appendChild(span);
+    }
+    inputBox.value = "";
+    saveData();
   }
 
-});
+  function saveData() {
+    localStorage.setItem("data", listContainer.innerHTML);
+  }
+
+  function showTask() {
+    listContainer.innerHTML = localStorage.getItem("data");
+  }
+
+  function incLovebar() {
+    if (loveCount === 1) {
+      lovebar.src = "images/lovebar1.png";
+    } else if (loveCount === 2) {
+      lovebar.src = "images/lovebar2.png";
+    } else if (loveCount === 3) {
+      lovebar.src = "images/lovebar3.png";
+    } else if (loveCount === 4) {
+      lovebar.src = "images/lovebar4.png";
+    } else if (loveCount === 5) {
+      lovebar.src = "images/lovebar5.png";
+    } else {
+      alert("Love Bar is Full!");
+    }
+    loveCount++;
+  }
+
 
 

@@ -200,3 +200,7 @@ ul li span:hover {
   display: flex;
   justify-content: center;
 }
+.lovebar {
+  display: inline-block;
+  vertical-align: top;
+}
