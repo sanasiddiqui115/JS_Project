@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Pets To-Do List App</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-       <div class="page">
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pets To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page" id="page">
         <div class="todo-app">
+            <!-- Container 0 -->
             <div class="container" id="container-0">
-                <h1>Welcome to  <em style="color: #ff5945;">PETODO</em></h1>
+                <h1>Welcome to <em style="color: #ff5945;">PETODO</em></h1>
                 <h2>A To-Do List designed for your beloved Pet</h2>
                 <button id="form-page">WOOF WOOF</button>
             </div>
-            <!-- <h1><img src="https://t4.ftcdn.net/jpg/02/26/53/33/240_F_226533348_TiIz0m2dU4dBXC6yFJrNOfXfh5YcEecY.jpg" alt="" class="topLogo"></h1> -->
+
+            <!-- Container 1 -->
             <div class="container" id="container-1">
                 <img src="https://t4.ftcdn.net/jpg/02/26/53/33/240_F_226533348_TiIz0m2dU4dBXC6yFJrNOfXfh5YcEecY.jpg" alt="" class="topLogo">
-                <h2>
-                    Add your pet details
-                </h2>
+                <h2>Add your pet details</h2>
                 <form id="form">
                     <div class="row">
-                        <input class="details" id="name" name="name" type="text"  placeholder="Owner's Name" required>
+                        <input class="details" id="name" name="name" type="text" placeholder="Owner's Name" required>
                     </div>
-                    <div >
-                        <select class="details" id="dropdown" name="role"required>
+                    <div>
+                        <select class="details" id="dropdown" name="role" required>
                             <option disabled selected value>Select your Pet</option>
                             <option value="dog">Dog</option>
                             <option value="cat">Cat</option>
@@ -42,28 +42,28 @@
                         <input id="pet-name" class="details" name="pet-name" type="text" placeholder="Pet's Name" required>
                     </div>
                     <div class="row">
-                        <input id="weight" class="details" name="weight" type="text"  placeholder="Pet's weight" >
-                    </div>                    
-                        <button id="start" >start</button>
-                    
-                        
+                        <input id="weight" class="details" name="weight" type="number" placeholder="Pet's weight">
+                    </div>
+                    <button id="start">start</button>
                 </form>
-             </div>
-            <div class="container"id="container-2">
-            <!-- <h1><img src="https://t4.ftcdn.net/jpg/02/26/53/33/240_F_226533348_TiIz0m2dU4dBXC6yFJrNOfXfh5YcEecY.jpg" alt="" class="topLogo"></h1> -->
-           <span><h2 id="pet-todo-title"></h2> <img src="images/todolist.png" alt="" id="listPic"> </span> 
+            </div>
 
+            <!-- Container 2 -->
+            <div class="container" id="container-2">
+                <span>
+                    <h2 id="pet-todo-title"></h2>
+                    <img src="images/todolist.png" alt="" id="listPic">
+                </span>
                 <div class="row">
                     <input type="text" id="input-box" placeholder="Add task">
                     <button id="btn">Add</button>
                 </div>
-                <ul id="list-container">
-                </ul>
+                <ul id="list-container"></ul>
                 <div class="buttons-div">
                     <button id="wb">Virtual Pet</button>
                     <button id="back-to-form">back</button>
                 </div>
-             </div>
+            </div>
             <div class="container" id="container-3">
             <!-- <h1><img src="https://t4.ftcdn.net/jpg/02/26/53/33/240_F_226533348_TiIz0m2dU4dBXC6yFJrNOfXfh5YcEecY.jpg" alt="" class="topLogo"></h1> -->
             <h2 id="virtual-name"></h2>
